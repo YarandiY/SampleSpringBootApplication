@@ -8,6 +8,10 @@ import com.example.SpringBootApp.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+
 @Service
 public class UserServiceImp implements UserService{
 
@@ -18,10 +22,15 @@ public class UserServiceImp implements UserService{
         this.userRepository = userRepository;
     }
 
-    public void printAllUserNames(){
+
+    @Override
+    public List getUsers(){
+        List<UserD> users = new ArrayList<>();
         userRepository.findAll().forEach(u -> {
-            System.out.print(u.getName());
+            UserD userDomain = new UserD(u.getName());
+            users.add(userDomain);
         });
+        return users;
     }
 
     @Override
@@ -30,7 +39,14 @@ public class UserServiceImp implements UserService{
             throw new RuntimeException("name is empty");
         User userModel = new User();
         userModel.setName(userD.getName());
-        userRepository.save(userModel);
+        System.out.println(userRepository.save(userModel));
+    }
+
+    @Override
+    public void deleteUser(int userId) {
+//        Optional<User> optionalUser = userRepository.findById(userId);
+//        optionalUser.orElseThrow(() ->new RuntimeException("user doesn't exist"));
+        userRepository.deleteById(userId);
     }
 
 }
