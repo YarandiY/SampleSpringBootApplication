@@ -3,7 +3,6 @@ package com.example.SpringBootApp.controller;
 
 import com.example.SpringBootApp.domain.UserD;
 import com.example.SpringBootApp.service.UserService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
@@ -12,8 +11,11 @@ import java.util.List;
 @RequestMapping("/users")
 public class UserController{
 
-    @Autowired
-    private UserService userService;
+    private final UserService userService;
+
+    public UserController(UserService userService) {
+        this.userService = userService;
+    }
 
     @PostMapping("")
     public @ResponseBody String addUser(@RequestBody UserD userD) {

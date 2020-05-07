@@ -24,13 +24,8 @@ public class UserServiceImp implements UserService{
 
 
     @Override
-    public List getUsers(){
-        List<UserD> users = new ArrayList<>();
-        userRepository.findAll().forEach(u -> {
-            UserD userDomain = new UserD(u.getName());
-            users.add(userDomain);
-        });
-        return users;
+    public List<User> getUsers(){
+        return new ArrayList<>(userRepository.findAll());
     }
 
     @Override
@@ -44,8 +39,8 @@ public class UserServiceImp implements UserService{
 
     @Override
     public void deleteUser(int userId) {
-//        Optional<User> optionalUser = userRepository.findById(userId);
-//        optionalUser.orElseThrow(() ->new RuntimeException("user doesn't exist"));
+        Optional<User> optionalUser = userRepository.findById(userId);
+        optionalUser.orElseThrow(() ->new RuntimeException("user doesn't exist"));
         userRepository.deleteById(userId);
     }
 
