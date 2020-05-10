@@ -1269,3 +1269,5 @@ List of constraint violations:[
 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624) [?:1.8.0_252]
 	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) [tomcat-embed-core-9.0.33.jar:9.0.33]
 	at java.lang.Thread.run(Thread.java:748) [?:1.8.0_252]
+2020-05-10 09:18:30,085 INFO  c.z.h.HikariDataSource  HikariPool-1 - Shutdown initiated...
+2020-05-10 09:18:30,089 INFO  c.z.h.HikariDataSource  HikariPool-1 - Shutdown completed.
