@@ -21,8 +21,4 @@ public class UserD {
 
     public UserD(){
     }
-
-    public UserD(String name){
-        this.name = name;
-    }
 }

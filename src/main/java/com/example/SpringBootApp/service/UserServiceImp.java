@@ -32,10 +32,11 @@ public class UserServiceImp implements UserService{
     }
 
     @Override
-    public void addUser(UserD userD) {
+    public User addUser(UserD userD) {
         User userModel = new User(userD);
         userRepository.save(userModel);
         logger.info("a user with name " + userModel.getName() + " with id " + userModel.getId() + " created");
+        return userModel;
     }
 
     @Override
